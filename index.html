@@ -1,41 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Website</title>
-    <style>
-        body {
-            font-family: Bodoni;
-            text-align: center;
-            background: white;
-            color: black;
-        }
-        h1 {
-            margin-top: 100px;
-            font-size: 150px;
-        }
-        p {
-            font-size: 100px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            background: white;
-            color: black;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: lightgray;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Latin Flashcards</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    background:white;
+    font-family:'Cormorant Garamond', serif;
+    color:#222;
+    text-align:center;
+}
+
+/* TOP TITLE */
+
+.title{
+    font-family:'Cinzel', serif;
+    font-size:60px;
+    color:#c9a227;
+    margin-top:40px;
+    letter-spacing:3px;
+    text-shadow:0 0 8px rgba(201,162,39,0.25);
+}
+
+/* SUBTITLE */
+
+.subtitle{
+    font-size:22px;
+    margin-top:10px;
+    color:#666;
+}
+
+/* FLASHCARD AREA */
+
+.flashcard-container{
+    display:flex;
+    justify-content:center;
+    margin-top:60px;
+    margin-bottom:80px;
+}
+
+.flashcard{
+    width:700px;
+    height:500px;
+    perspective:2000px;
+    cursor:pointer;
+}
+
+.flashcard-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform 0.9s;
+    transform-style:preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner{
+    transform:rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 35px rgba(0,0,0,0.18);
+    background:white;
+}
+
+/* FRONT */
+
+.flashcard-front{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:3px solid #e6d18c;
+}
+
+.front-text{
+    font-family:'Cinzel', serif;
+    font-size:54px;
+    color:#111;
+    padding:40px;
+}
+
+/* BACK */
+
+.flashcard-back{
+    transform:rotateY(180deg);
+}
+
+.flashcard-back img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* CLICK NOTE */
+
+.click-note{
+    margin-top:-40px;
+    font-size:20px;
+    color:#777;
+}
+
+/* DISCLAIMER */
+
+.disclaimer{
+    font-size:12px;
+    color:#999;
+    margin-top:100px;
+    margin-bottom:20px;
+    font-family:Arial, sans-serif;
+}
+
+/* BOTTOM TITLE */
+
+.bottom-title{
+    font-family:'Cinzel', serif;
+    font-size:34px;
+    color:#c9a227;
+    margin-bottom:60px;
+}
+
+/* SECRET LINK */
+
+.secret-link{
+    margin-bottom:40px;
+    font-size:14px;
+}
+
+.secret-link a{
+    text-decoration:none;
+    color:#888;
+}
+
+.secret-link a:hover{
+    color:#c9a227;
+}
+
+/* IPAD OPTIMIZATION */
+
+@media (max-width: 1024px){
+
+.title{
+    font-size:48px;
+}
+
+.flashcard{
+    width:88vw;
+    height:62vw;
+}
+
+.front-text{
+    font-size:42px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-<h1>Latin Flashcards
-<p>Hebe and Aarons latin flashcards!</p>
+<div class="title">
+    Latin Flashcards
+</div>
 
-<button onclick="alert('You clicked the button!')">Click Me</button>
+<div class="subtitle">
+    Interactive Latin Study Set
+</div>
+
+<div class="flashcard-container">
+
+    <div class="flashcard" onclick="flipCard(this)">
+
+        <div class="flashcard-inner">
+
+            <!-- FRONT -->
+
+            <div class="flashcard-front">
+                <div class="front-text">
+                    Cruciare,<br>
+                    cruciavisse
+                </div>
+            </div>
+
+            <!-- BACK -->
+
+            <div class="flashcard-back">
+                <img src="IMG_0549.jpeg" alt="Latin flashcard">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="click-note">
+    Click the flashcard to flip it
+</div>
+
+<div class="disclaimer">
+    Hebe and Aaron can make mistakes.
+</div>
+
+<div class="bottom-title">
+    Hebe and Aaron Final Flashcards
+</div>
+
+<div class="secret-link">
+    <a href="secret.html">do not click</a>
+</div>
+
+<script>
+
+function flipCard(card){
+    card.classList.toggle("flipped");
+}
+
+</script>
 
 </body>
 </html>
